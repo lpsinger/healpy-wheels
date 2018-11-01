@@ -1,6 +1,10 @@
+env:
+  # - PYVERSIONS="2.7 3.4 3.5 3.6 3.7" VERSION=1.12.4
+  - PYVERSIONS="2.7" VERSION=1.12.4
 language: minimal
 os: osx
 script:
   - curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
   - bash Miniconda3-latest-MacOSX-x86_64.sh -b -p miniconda
-  - for PYVER in 2.7 3.4 3.5 3.6 3.7; do miniconda/bin/conda create -y -n $PYVER matplotlib numpy six astropy scipy pytest-runner six; done
+  - for PYVERSION in $PYVERSIONS; do miniconda/bin/conda create -y -n python==$PYVERSION.\* matplotlib numpy six astropy scipy pytest-runner six; done
+  - for PYVERSION in $PYVERSIONS; do miniconda/envs/$PYVERSION/bin/pip wheel --no-deps healpy==$VERSION; done
