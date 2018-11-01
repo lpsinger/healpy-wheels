@@ -6,5 +6,5 @@ os: osx
 script:
   - curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
   - bash Miniconda3-latest-MacOSX-x86_64.sh -b -p miniconda
-  - for PYVERSION in $PYVERSIONS; do miniconda/bin/conda create -y -n python==$PYVERSION.\* matplotlib numpy six astropy scipy pytest-runner six; done
+  - for PYVERSION in $PYVERSIONS; do miniconda/bin/conda create -y -n $PYVERSION python==$PYVERSION.\* matplotlib numpy six astropy scipy pytest-runner six; done
   - for PYVERSION in $PYVERSIONS; do miniconda/envs/$PYVERSION/bin/pip wheel --no-deps healpy==$VERSION; done
