@@ -1,3 +1,4 @@
+language: python
 os: osx
 osx_image: xcode6.4
 script:
