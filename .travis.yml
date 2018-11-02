@@ -1,6 +1,6 @@
 env:
-  # - PYVERSIONS="2.7 3.4 3.5 3.6 3.7" VERSION=1.12.4
-  - PYVERSIONS="2.7" VERSION=1.12.4
+  # - PYVERSIONS="2.7 3.4 3.5 3.6 3.7" VERSION=1.12.4 V=1
+  - PYVERSIONS="2.7" VERSION=1.12.4 V=1
 language: minimal
 os: osx
 script:
