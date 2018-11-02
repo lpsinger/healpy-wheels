@@ -4,6 +4,7 @@ env:
 language: minimal
 os: osx
 script:
+  - brew install cfitsio
   - curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
   - bash Miniconda3-latest-MacOSX-x86_64.sh -b -p miniconda
   - source miniconda/bin/activate
