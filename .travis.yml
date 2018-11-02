@@ -6,5 +6,9 @@ os: osx
 script:
   - curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
   - bash Miniconda3-latest-MacOSX-x86_64.sh -b -p miniconda
-  - for PYVERSION in $PYVERSIONS; do miniconda/bin/conda create -y -n $PYVERSION python==$PYVERSION.\* matplotlib numpy six astropy scipy pytest-runner six; done
-  - for PYVERSION in $PYVERSIONS; do miniconda/envs/$PYVERSION/bin/pip wheel --no-deps healpy==$VERSION; done
+  - source miniconda/bin/activate
+  - conda install gcc
+  - pip install delocate
+  - for PYVERSION in $PYVERSIONS; do conda create -y -n $PYVERSION python==$PYVERSION.\* gcc matplotlib numpy six astropy scipy pytest-runner six; done
+  - for PYVERSION in $PYVERSIONS; do (source miniconda/bin/activate; pip wheel --no-deps healpy==$VERSION); done
+  - for WHEEL in *.whl; do delocate-wheel $WHEEL -w wheelhouse; done
